@@ -7,19 +7,19 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-func skipIntegration(t *testing.T) {
+func SkipIntegration(t *testing.T) {
 	if os.Getenv("C3_TEST_SKIP_INTEGRATION") != "" {
 		t.Skip("Skipping Integration test...")
 	}
 }
 
-func skipPlan(t *testing.T) {
+func SkipPlan(t *testing.T) {
 	if os.Getenv("C3_TEST_SKIP_PLAN") != "" {
 		t.Skip("Skipping TF-PLAN-BASED Test...")
 	}
 }
 
-func skipAws(t *testing.T) {
+func SkipAws(t *testing.T) {
 	if os.Getenv("C3_TEST_SKIP_UNIT") != "" {
 		t.Skip("Skipping tests requiring AWS credentials...")
 	}
