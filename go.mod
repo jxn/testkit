@@ -1,4 +1,4 @@
-module c3testkit/v2
+module github.com/jxn/testkit
 
 go 1.17
 
