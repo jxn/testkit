@@ -1,6 +1,7 @@
 package terraform
 
 import (
+	"encoding/json"
 	"os"
 	"testing"
 
@@ -23,6 +24,14 @@ func SkipAws(t *testing.T) {
 	if os.Getenv("C3_TEST_SKIP_UNIT") != "" {
 		t.Skip("Skipping tests requiring AWS credentials...")
 	}
+}
+
+func JsonToMap(t *testing.T, jsonString string) map[string]interface{} {
+	var jsonMap map[string]interface{}
+	if err := json.Unmarshal([]byte(jsonString), &jsonMap); err != nil {
+		t.Fatal(err)
+	}
+	return jsonMap
 }
 
 func WillActionByTagValue(plan tfjson.Plan, resource string, tagName string, tagValue string, changeAction string) bool {
